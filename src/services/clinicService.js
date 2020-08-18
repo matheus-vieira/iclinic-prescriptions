@@ -15,11 +15,8 @@ class ClinicService extends BaseService {
   }
 
   async getById(id) {
-    return new Promise((resolve, reject) => {
-      this.request({ url: `clinics/${id}` })
-        .then((response) => resolve(response.data))
-        .catch((error) => reject(error));
-    });
+    debug(`calling ${this.url}/clinics/${id}`);
+    return this.get(`clinics/${id}`);
   }
 }
 
