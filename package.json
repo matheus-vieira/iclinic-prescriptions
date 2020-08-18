@@ -1,0 +1,28 @@
+{
+  "name": "iclinic-prescriptions",
+  "version": "1.0.0",
+  "description": "API de Prescrições para o teste da Iclinic",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheus-vieira/iclinic-prescriptions.git"
+  },
+  "keywords": [
+    "iClinic",
+    "api",
+    "teste"
+  ],
+  "author": "Matheus Costa Vieira <matheus.costa.vieira@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/matheus-vieira/iclinic-prescriptions/issues"
+  },
+  "homepage": "https://github.com/matheus-vieira/iclinic-prescriptions#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
