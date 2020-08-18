@@ -1,5 +1,5 @@
+const json = require('express').json;
 module.exports = (server) => {
     console.log('Setando middlewares');
-
-    return server;
+    server.use(json());
 }
