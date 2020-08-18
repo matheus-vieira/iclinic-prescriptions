@@ -1,4 +1,7 @@
 const express = require('express');
+
+const logger = require('../utils/logging/logger');
+
 const middlewares = require('./setMiddlewares');
 const routes = require('./setRoutes');
 
@@ -7,7 +10,7 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 const create = () => {
-    console.log('Inicializando servidor com expressJS');
+    logger.info('Inicializando servidor com expressJS');
 
     const server = express();
 

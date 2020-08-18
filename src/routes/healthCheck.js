@@ -1,7 +1,7 @@
-const sendFileRouter = require('./sendFileRouter')
+const sendFileRouter = require('./sendFileRouter');
+const logger = require('../utils/logging/logger');
 
 module.exports =  (server) => {
-    console.log('Setando rota para healthCheck');
     const router = sendFileRouter('/healthCheck',  "/../static/healthCheck.html");
     server.use(router);
 };;

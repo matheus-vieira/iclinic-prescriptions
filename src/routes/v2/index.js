@@ -1,6 +1,8 @@
-const prescriptionsRouter = require('./prescriptions');
-module.exports = (server) => {
-    console.log('Setando rotas v2');
+const prescriptionsRouter = require("./prescriptions");
+const { debug } = require("../../utils/logging/logger");
 
-    server.use("/v2", prescriptionsRouter);
+module.exports = (server) => {
+  debug("Setando rotas /v2");
+
+  server.use("/v2", prescriptionsRouter);
 };

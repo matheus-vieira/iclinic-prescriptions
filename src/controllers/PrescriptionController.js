@@ -1,13 +1,14 @@
 const { validationResult } = require("express-validator");
 const Messages = require("../utils/errorMessageUtil");
+const logger = require("../utils/logging/logger");
 
 class PrescriptionController {
   async save(req, res) {
-    console.log("checking validation");
+    logger.debug("checking validation");
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      console.log("has errors");
+      logger.debug("has errors");
       return res.status(400).json(Messages["01"]);
     }
     

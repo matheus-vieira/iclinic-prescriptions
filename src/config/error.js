@@ -1,9 +1,10 @@
-console.log('[SYSTEM] Configurando uncaughtException and unhandledRejection');
+const logger = require('../utils/logging/logger');
+logger.debug('[SYSTEM] Configurando uncaughtException and unhandledRejection');
 
 process.on('uncaughtException', err => {
-    console.log('[ERROR] Exceção não tratada: ', err);
+    logger.error('[ERROR] Exceção não tratada: ', err);
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-    console.log('[ERROR] Rejeição não tratada: ', reason);
+    logger.error('[ERROR] Rejeição não tratada: ', reason);
 });

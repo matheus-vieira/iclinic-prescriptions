@@ -1,10 +1,10 @@
 require('./config/error');
 require('./config/enviroment/setEnv');
 const server = require('./createServer/create');
+const logger = require('./utils/logging/logger');
 
-console.log("env SERVER_PORT", process.env.SERVER_PORT);
 const PORT = process.env.SERVER_PORT || 3333;
 
 server.listen(PORT, () => {
-    console.log(`API de Prescrições do teste da IClinic rodando na porta:${PORT}!`);
+    logger.info(`API de Prescrições do teste da IClinic rodando na porta:${PORT}!`);
 });
