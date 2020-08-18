@@ -1,5 +1,8 @@
+const indexRoute = require('../routes/index');
+const healthCheckRoute = require('../routes/healthCheck');
+
 module.exports = (server) => {
     console.log('Setando rotas');
-    
-    return server;
+    indexRoute(server);
+    healthCheckRoute(server);
 }
