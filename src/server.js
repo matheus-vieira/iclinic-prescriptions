@@ -1,3 +1,5 @@
+require('./config/error');
+require('./config/enviroment/setEnv');
 const server = require('./createServer/create');
 
 console.log("env SERVER_PORT", process.env.SERVER_PORT);
