@@ -11,8 +11,6 @@ class PatientService extends BaseService {
     this.retries = process.env.PATIENTS_API_RETRIES;
     this.ttl = process.env.PATIENTS_API_TTL;
     this.errorMessage = require("../utils/errorMessageUtil")["03"];
-
-    this.configure();
   }
 
   async getById(id) {

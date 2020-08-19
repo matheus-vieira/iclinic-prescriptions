@@ -5,15 +5,24 @@ const { debug, error } = require("../utils/logging/logger");
 const ClinicService = require("../services/clinicService");
 const PatientService = require("../services/patientService");
 const PhysicianService = require("../services/physicianService");
+const MetricsService = require("../services/metricsService");
 
 //Database
 const PrescriptionRepository = require("../repository/PrescriptionRepository");
+
+const notFoundError = (key) => {
+  let e = new Error(Messages[key]);
+  e.statusCode = 404;
+  throw e;
+};
 
 class PrescriptionBusinessService {
   constructor() {
     this.clinic = null;
     this.patient = null;
     this.physician = null;
+    this.prescription = null;
+    this.text = null;
   }
 
   async callServices({ clinic, patient, physician, text }) {
@@ -27,14 +36,16 @@ class PrescriptionBusinessService {
 
     try {
       this.physician = await PhysicianService.getById(physician.id);
-      if (physician == null) this.notFoundError("02");
+      if (physician == null) notFoundError("02");
 
       this.patient = await PatientService.getById(patient.id);
-      if (patient == null) this.notFoundError("03");
+      if (patient == null) notFoundError("03");
 
       this.prescription = await PrescriptionRepository.createPrescription(this);
 
+      debug("able to save prescription {0}", this.prescription)
       // save to metrics
+      await MetricsService.save(this);
     } catch (err) {
       error(err);
       throw err;
@@ -56,12 +67,6 @@ class PrescriptionBusinessService {
         id: this.physician.id,
       },
     };
-  }
-
-  notFoundError(key) {
-    let e = new Error(Messages[key]);
-    e.statusCode = 404;
-    throw e;
   }
 }
 

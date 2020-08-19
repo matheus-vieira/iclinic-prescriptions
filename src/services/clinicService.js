@@ -11,8 +11,6 @@ class ClinicService extends BaseService {
     this.retries = process.env.CLINICS_API_RETRIES;
     this.ttl = process.env.CLINICS_API_TTL;
     this.errorMessage = "";
-
-    this.configure();
   }
 
   async getById(id) {

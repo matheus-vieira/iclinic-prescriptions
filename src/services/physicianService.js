@@ -11,8 +11,6 @@ class PhysicianService extends BaseService {
     this.retries = process.env.PHYSICIANS_API_RETRIES;
     this.ttl = process.env.PHYSICIANS_API_TTL;
     this.errorMessage = require("../utils/errorMessageUtil")["02"];
-
-    this.configure();
   }
 
   async getById(id) {

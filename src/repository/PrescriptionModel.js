@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
+const { error } = require('../utils/logging/logger')
 
 module.exports = (sequelize) => {
     try {
@@ -8,7 +9,7 @@ module.exports = (sequelize) => {
             patientId: DataTypes.INTEGER,
             text: DataTypes.TEXT,
         });
-    } catch (e) {
-        console.error(e);
+    } catch (err) {
+        error(err);
     }
 };
