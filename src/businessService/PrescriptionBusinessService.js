@@ -6,6 +6,9 @@ const ClinicService = require("../services/clinicService");
 const PatientService = require("../services/patientService");
 const PhysicianService = require("../services/physicianService");
 
+//Database
+const PrescriptionRepository = require("../repository/PrescriptionRepository");
+
 class PrescriptionBusinessService {
   constructor() {
     this.clinic = null;
@@ -13,7 +16,8 @@ class PrescriptionBusinessService {
     this.physician = null;
   }
 
-  async callServices({ clinic, patient, physician }) {
+  async callServices({ clinic, patient, physician, text }) {
+    this.text = text;
     try {
       this.clinic = await ClinicService.getById(clinic.id);
     } catch (err) {
@@ -28,20 +32,20 @@ class PrescriptionBusinessService {
       this.patient = await PatientService.getById(patient.id);
       if (patient == null) this.notFoundError("03");
 
-      // save to database
+      this.prescription = await PrescriptionRepository.createPrescription(this);
+
       // save to metrics
     } catch (err) {
       error(err);
       throw err;
     }
 
-    // try save info database and metrics service;
     return this.getReturnData();
   }
 
   getReturnData() {
     return {
-      id: "some new id",
+      id: this.prescription.id,
       clinic: {
         id: this.clinic.id,
       },
