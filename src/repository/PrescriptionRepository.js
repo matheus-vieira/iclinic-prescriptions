@@ -5,7 +5,7 @@ const PrescriptionModel = require("./PrescriptionModel");
 class PrescriptionRepository extends Database {
   defineModel() {
     this.model = PrescriptionModel(this.database);
-    this.database.sync({ force: true });
+    this.database.sync();
   }
 
   async createPrescription({ clinic, patient, physician, text }) {
