@@ -4,7 +4,8 @@
   "description": "API de Prescrições para o teste da Iclinic",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "all-tests": "npm run unit-tests",
+    "unit-tests": "mocha **/*.test.js",
     "dev": "NODE_ENV=dev nodemon src/server.js"
   },
   "repository": {
@@ -36,10 +37,13 @@
     "request": "^2.88.2",
     "request-plus": "^2.0.0",
     "sequelize": "^6.3.4",
+    "supertest": "^4.0.2",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.2.0"
+    "chai": "^4.2.0",
+    "mocha": "^8.1.1",
+    "sinon": "^9.0.3"
   }
 }

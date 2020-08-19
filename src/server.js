@@ -8,3 +8,5 @@ const PORT = process.env.SERVER_PORT || 3333;
 server.listen(PORT, () => {
     logger.info(`API de Prescrições do teste da IClinic rodando na porta:${PORT}!`);
 });
+
+module.exports = server;
