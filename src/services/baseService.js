@@ -4,7 +4,7 @@ const createRequest = require("./createRequest");
 const errorHandler = (err, msg) => {
   err.message = msg;
   err.statusCode = 500;
-  // console.log(err);
+
   error(err);
   throw err;
 };
