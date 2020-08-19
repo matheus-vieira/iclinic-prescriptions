@@ -43,7 +43,7 @@ class PrescriptionBusinessService {
 
       this.prescription = await PrescriptionRepository.createPrescription(this);
 
-      debug("able to save prescription {0}", this.prescription)
+      debug(`able to save prescription ${JSON.stringify(this.prescription)}`);
       // save to metrics
       await MetricsService.save(this);
     } catch (err) {

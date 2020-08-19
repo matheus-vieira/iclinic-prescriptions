@@ -9,6 +9,10 @@ module.exports = class Database {
     this.defineModel();
   }
 
+  defineModel() {
+    throw new Error('You have to implement the method doSomething!');
+  }
+
   createDb() {
     this.database = new Sequelize(
       process.env.DB_DATABASE,
@@ -38,7 +42,7 @@ module.exports = class Database {
       );
     } catch (err) {
       logger.error(err);
-      throw e;
+      throw err;
     }
   }
 };
