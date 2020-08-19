@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const logger = require("./logger");
+const logger = require("../src/utils/logging/logger");
 
 
 describe("logger instance", function () {

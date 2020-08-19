@@ -1,4 +1,6 @@
-const result = require("dotenv").config();
+const result = require("dotenv").config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
+});
 
 if (result.error) {
   throw result.error;
