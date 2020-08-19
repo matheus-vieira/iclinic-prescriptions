@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 const create = () => {
-    logger.info('Inicializando servidor com expressJS');
+    logger.debug('Inicializando servidor com expressJS');
 
     const server = express();
 
