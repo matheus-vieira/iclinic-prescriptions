@@ -1,23 +1,23 @@
-const express = require('express');
+const express = require("express");
 
-const logger = require('../utils/logging/logger');
+const logger = require("../utils/logging/logger");
 
-const middlewares = require('./setMiddlewares');
-const routes = require('./setRoutes');
+const middlewares = require("./setMiddlewares");
+const routes = require("./setRoutes");
 
-if (process.env.NODE_ENV === 'test') {
-    require('./config/environment');
+if (process.env.NODE_ENV === "test") {
+  require("./config/environment");
 }
 
 const create = () => {
-    logger.debug('Inicializando servidor com expressJS');
+  logger.debug("Inicializando servidor com expressJS");
 
-    const server = express();
+  const server = express();
 
-    middlewares(server);
-    routes(server);
+  middlewares(server);
+  routes(server);
 
-    return server;
+  return server;
 };
 
 module.exports = create();

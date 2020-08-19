@@ -1,6 +1,6 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize } = require('sequelize');
 
-const logger = require("../utils/logging/logger");
+const logger = require('../utils/logging/logger');
 
 module.exports = class Database {
   constructor() {

@@ -1,6 +1,6 @@
 const cacheRequest = require("../config/cacheManager");
 const requestPlus = require("request-plus");
-const { error } = require("../utils/logging/logger");
+const { error } = require("./logging/logger");
 
 const createRequest = ({ url, token, method, timeout, retries, ttl }) => {
   try {

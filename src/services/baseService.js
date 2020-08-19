@@ -1,5 +1,5 @@
 const { error, debug } = require("../utils/logging/logger");
-const createRequest = require("./createRequest");
+const createRequest = require("../utils/createRequest");
 
 const errorHandler = (err, msg) => {
   err.message = msg;

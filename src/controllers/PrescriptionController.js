@@ -18,7 +18,7 @@ class PrescriptionController {
     }
 
     try {
-      debug("Calling PrescriptionBusinessService", req.body)
+      debug("Calling PrescriptionBusinessService", req.body);
       const data = await PrescriptionBusinessService.callServices(req.body);
       return res.status(200).json({ data: data });
     } catch (err) {

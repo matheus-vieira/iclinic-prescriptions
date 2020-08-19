@@ -2,8 +2,8 @@ const request = require("supertest");
 describe("loading express", function () {
   var server;
   beforeEach(function () {
-    delete require.cache[require.resolve('./server')];
-    server = require('./server');
+    delete require.cache[require.resolve("./server")];
+    server = require("./server");
   });
   afterEach(function (done) {
     server.close(done);

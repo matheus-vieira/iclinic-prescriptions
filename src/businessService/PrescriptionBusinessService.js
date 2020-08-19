@@ -1,28 +1,24 @@
-const Messages = require("../utils/errorMessageUtil");
+const { notFoundError } = require("../utils/notFoundError");
 const { debug, error } = require("../utils/logging/logger");
 
 //Services
-const ClinicService = require("../services/clinicService");
-const PatientService = require("../services/patientService");
-const PhysicianService = require("../services/physicianService");
-const MetricsService = require("../services/metricsService");
+const {
+  ClinicService,
+  PatientService,
+  PhysicianService,
+  MetricsService,
+} = require("../services");
 
 //Database
 const PrescriptionRepository = require("../repository/PrescriptionRepository");
 
-const notFoundError = (key) => {
-  let e = new Error(Messages[key]);
-  e.statusCode = 404;
-  throw e;
-};
-
 class PrescriptionBusinessService {
   constructor() {
-    this.clinic = null;
-    this.patient = null;
-    this.physician = null;
-    this.prescription = null;
-    this.text = null;
+    this.clinic;
+    this.patient;
+    this.physician;
+    this.prescription;
+    this.text;
   }
 
   async callServices({ clinic, patient, physician, text }) {
@@ -57,15 +53,9 @@ class PrescriptionBusinessService {
   getReturnData() {
     return {
       id: this.prescription.id,
-      clinic: {
-        id: this.clinic.id,
-      },
-      patient: {
-        id: this.patient.id,
-      },
-      physician: {
-        id: this.physician.id,
-      },
+      clinic: { id: this.clinic.id },
+      patient: { id: this.patient.id },
+      physician: { id: this.physician.id },
     };
   }
 }

@@ -19,4 +19,4 @@ class PhysicianService extends BaseService {
   }
 }
 
-module.exports = new PhysicianService;
+module.exports = new PhysicianService();
