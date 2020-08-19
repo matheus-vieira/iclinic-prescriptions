@@ -1,7 +1,7 @@
 const { createLogger, transports, format } = require('winston');
 const DailyRotateFile = require('winston-daily-rotate-file');
 
-const LOG_LEVEL = process.env.APP_LOG_LEVEL || 'debug';
+const LOG_LEVEL = process.env.APP_LOG_LEVEL || 'info';
 const logger = createLogger({
   level: LOG_LEVEL,
   format: format.combine(
@@ -10,11 +10,12 @@ const logger = createLogger({
   ),
   transports: [
     new DailyRotateFile({
-      filename: 'logs/%DATE%/application.log',
+      filename: `logs/%DATE%/application.log`,
       datePattern: 'YYYY-MM-DD-HH',
       zippedArchive: true,
       maxSize: '20m',
-      maxFiles: '14d'
+      maxFiles: '14d',
+      level: 'debug'
     }),
     new transports.File({
       filename: `./logs/${LOG_LEVEL}.log`,

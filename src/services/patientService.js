@@ -1,5 +1,5 @@
 const BaseService = require("./baseService");
-const { error, debug } = require("../utils/logging/logger");
+const { debug } = require("../utils/logging/logger");
 
 class PatientService extends BaseService {
   constructor() {
@@ -10,6 +10,7 @@ class PatientService extends BaseService {
     this.timeout = process.env.PATIENTS_API_TIMEOUT;
     this.retries = process.env.PATIENTS_API_RETRIES;
     this.ttl = process.env.PATIENTS_API_TTL;
+    this.errorMessage = require("../utils/errorMessageUtil")["03"];
 
     this.configure();
   }

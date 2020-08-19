@@ -1,5 +1,5 @@
 const cacheRequest = require("../config/cacheManager");
-const rp = require("request-plus");
+const requestPlus = require("request-plus");
 const { error, debug } = require("../utils/logging/logger");
 
 class BaseService {
@@ -9,10 +9,11 @@ class BaseService {
     this.timeout = "";
     this.retries = "";
     this.ttl = "";
+    this.errorMessage = "";
   }
   configure() {
     try {
-      this.request = rp({
+      this.request = requestPlus({
         defaults: {
           baseUrl: this.url,
           headers: {
@@ -41,8 +42,14 @@ class BaseService {
     return new Promise((resolve, reject) => {
       this.request({ url: url })
         .then((response) => resolve(response.data))
-        .catch((error) => reject(error));
+        .catch((error) => reject(errorHandler(error)));
     });
+  }
+  
+
+  errorHandler(err) {
+    err.message = this.errorMessage;
+    err.statusCode = 500
   }
 }
 
