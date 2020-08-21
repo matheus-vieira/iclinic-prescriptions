@@ -1,4 +1,3 @@
-const { error, debug } = require("../utils/logging/logger");
 const makeRequest = require("../utils/request");
 
 class BaseService {
@@ -9,17 +8,17 @@ class BaseService {
     this.retries;
     this.ttl;
     this.errorMessage;
+    this.method = "get";
   }
 
   async get(route) {
-    const { data } = await makeRequest(Object.assign(this, { method: "get" }), route);
+    const { data } = await makeRequest(this, route);
     return data;
   }
 
   async post(route, data) {
-    return await makeRequest(Object.assign(this, { method: "post" }), route, data);
+    return await makeRequest(this, route, data);
   }
-
 }
 
 module.exports = BaseService;

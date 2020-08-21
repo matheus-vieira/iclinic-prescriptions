@@ -25,6 +25,7 @@ class MetricsService extends BaseService {
     this.retries = process.env.METRICS_API_TIMEOUT;
     this.ttl = process.env.METRICS_API_TTL;
     this.errorMessage = require("../utils/errorMessageUtil")["04"];
+    this.method = "post";
   }
 
   async save(param) { 
