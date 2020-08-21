@@ -3,8 +3,8 @@ const { debug, info } = require("../utils/logging/logger");
 
 const buildMetricObject = ({ clinic, patient, physician }) => {
   return {
-    clinic_id: clinic.id,
-    clinic_name: clinic.name,
+    clinic_id: clinic ? clinic.id : null,
+    clinic_name: clinic ? clinic.name : null,
     physician_id: physician.id,
     physician_name: physician.fullName,
     physician_crm: physician.crm,

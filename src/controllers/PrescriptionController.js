@@ -6,20 +6,22 @@ const { debug, error } = require("../utils/logging/logger");
 const PrescriptionBusinessService = require("../businessService/PrescriptionBusinessService");
 
 class PrescriptionController {
-  constructor() {}
+  constructor() {
+    this.businessService = new PrescriptionBusinessService();
+  }
 
   async save(req, res) {
     debug("checking validation");
-    const errors = validationResult(req);
+    const result = validationResult(req);
 
-    if (!errors.isEmpty()) {
-      debug("has errors");
+    if (!result.isEmpty()) {
+      for (const e of result.errors) error(JSON.stringify(e));
       return res.status(400).json(require("../utils/errorMessageUtil")["01"]);
     }
 
     try {
-      debug("Calling PrescriptionBusinessService", req.body);
-      const data = await PrescriptionBusinessService.callServices(req.body);
+      debug("Calling this.businessService", req.body);
+      const data = await this.businessService.callServices(req.body);
       return res.status(200).json({ data: data });
     } catch (err) {
       error(err);

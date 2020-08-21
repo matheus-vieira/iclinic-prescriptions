@@ -38,17 +38,17 @@ const makeRequest = async (reqOpt, route, data) => {
     let opt = { url: route };
     if (data) {
       debug(`with data: ${JSON.stringify(data)}`);
-      opt.body =  data;
+      opt.body = data;
     }
-    const reqFn= createRequest(reqOpt);
+    const reqFn = createRequest(reqOpt);
     return await reqFn(opt);
   } catch (err) {
     err.message = reqOpt.errorMessage;
-    err.statusCode = 500;
-  
-    error(err);
+    err.statusCode = err.statusCode || 500;
+
+    error(JSON.stringify(err));
     throw err;
   }
-}
+};
 
 module.exports = makeRequest;

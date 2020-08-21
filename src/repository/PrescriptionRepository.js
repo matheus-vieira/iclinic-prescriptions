@@ -2,7 +2,7 @@ const Database = require("./database");
 
 const PrescriptionModel = require("./PrescriptionModel");
 
-class PrescriptionRepository extends Database {
+module.exports = class PrescriptionRepository extends Database {
   defineModel() {
     this.model = PrescriptionModel(this.database);
     this.database.sync();
@@ -10,12 +10,10 @@ class PrescriptionRepository extends Database {
 
   async createPrescription({ clinic, patient, physician, text }) {
     return await this.create({
-      clinicId: clinic.id,
+      clinicId: clinic ? clinic.id : null,
       physicianId: physician.id,
       patientId: patient?.id,
       text: text,
     });
   }
 }
-
-module.exports = new PrescriptionRepository();

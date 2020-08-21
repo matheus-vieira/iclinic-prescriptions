@@ -14,8 +14,10 @@ class ClinicService extends BaseService {
   }
 
   async getById(id) {
-    debug(`calling ${this.url}/clinics/${id}`);
-    return this.get(`clinics/${id}`);
+    try {
+      return await this.get(`clinics/${id}`);
+    } catch (err) {}
+    return null;
   }
 }
 

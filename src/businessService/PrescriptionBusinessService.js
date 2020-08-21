@@ -19,16 +19,13 @@ class PrescriptionBusinessService {
     this.physician;
     this.prescription;
     this.text;
+
+    this.repository = new PrescriptionRepository();
   }
 
   async callServices({ clinic, patient, physician, text }) {
     this.text = text;
-    try {
-      this.clinic = await ClinicService.getById(clinic.id);
-    } catch (err) {
-      error(err);
-    }
-    this.clinic = this.clinic || { name: null };
+    this.clinic = await ClinicService.getById(clinic.id);
 
     try {
       this.physician = await PhysicianService.getById(physician.id);
@@ -39,7 +36,7 @@ class PrescriptionBusinessService {
       debug(`PrescriptionBusinessService::callServices::patient: ${JSON.stringify(this.patient)}`);
       if (this.patient == null) notFoundError("03");
 
-      this.prescription = await PrescriptionRepository.createPrescription(this);
+      this.prescription = await this.repository.createPrescription(this);
 
       debug(`able to save prescription ${JSON.stringify(this.prescription)}`);
       // save to metrics
@@ -55,11 +52,12 @@ class PrescriptionBusinessService {
   getReturnData() {
     return {
       id: this.prescription.id,
-      clinic: { id: this.clinic.id },
+      clinic: { id:  this.clinic ? this.clinic.id : null},
       patient: { id: this.patient.id },
       physician: { id: this.physician.id },
+      text: { id: this.text },
     };
   }
 }
 
-module.exports = new PrescriptionBusinessService();
+module.exports = PrescriptionBusinessService
