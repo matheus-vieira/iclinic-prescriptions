@@ -1,6 +1,6 @@
 const cacheRequest = require("../config/cacheManager");
 const requestPlus = require("request-plus");
-const { error } = require("./logging/logger");
+const { error, debug } = require("./logging/logger");
 
 const createRequest = ({ url, token, method, timeout, retries, ttl }) => {
   try {
@@ -31,4 +31,24 @@ const createRequest = ({ url, token, method, timeout, retries, ttl }) => {
   }
 };
 
-module.exports = createRequest;
+const makeRequest = async (reqOpt, route, data) => {
+  try {
+    debug("makeRequest method");
+    debug(`calling ${reqOpt.method} ${reqOpt.url}/${route}`);
+    let opt = { url: route };
+    if (data) {
+      debug(`with data: ${JSON.stringify(data)}`);
+      opt.body =  data;
+    }
+    const reqFn= createRequest(reqOpt);
+    return await reqFn(opt);
+  } catch (err) {
+    err.message = reqOpt.errorMessage;
+    err.statusCode = 500;
+  
+    error(err);
+    throw err;
+  }
+}
+
+module.exports = makeRequest;

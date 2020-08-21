@@ -27,7 +27,7 @@ class MetricsService extends BaseService {
     this.errorMessage = require("../utils/errorMessageUtil")["04"];
   }
 
-  async save(param) {
+  async save(param) { 
     return this.post("api/metrics", buildMetricObject(param));
   }
 }

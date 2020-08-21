@@ -32,10 +32,12 @@ class PrescriptionBusinessService {
 
     try {
       this.physician = await PhysicianService.getById(physician.id);
-      if (physician == null) notFoundError("02");
+      debug(`PrescriptionBusinessService::callServices::physician: ${JSON.stringify(this.physician)}`);
+      if (this.physician == null) notFoundError("02");
 
       this.patient = await PatientService.getById(patient.id);
-      if (patient == null) notFoundError("03");
+      debug(`PrescriptionBusinessService::callServices::patient: ${JSON.stringify(this.patient)}`);
+      if (this.patient == null) notFoundError("03");
 
       this.prescription = await PrescriptionRepository.createPrescription(this);
 
