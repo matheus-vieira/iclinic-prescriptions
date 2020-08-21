@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const Messages = require("../src/utils/errorMessageUtil");
+const Messages = require("../../src/utils/errorMessageUtil");
 
 const checkrop = (obj, prop, value) => {
   expect(obj).to.have.own.property(prop).equal(value);
