@@ -1,7 +1,11 @@
-const result = require("dotenv").config();
+try {
+  const result = require("dotenv").config();
 
-if (result.error) {
-  throw result.error;
+  if (result.error) {
+    throw result.error;
+  }
+} catch (error) {
+  console.log("without env file");
 }
 
 const logger = require("../../utils/logging/logger");

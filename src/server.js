@@ -1,5 +1,5 @@
-require("./config/error");
 require("./config/enviroment/setEnv");
+require("./config/error");
 const server = require("./createServer/create");
 const logger = require("./utils/logging/logger");
 
@@ -11,7 +11,7 @@ const PORT = (() => {
 })();
 
 module.exports = server.listen(PORT, () => {
-  logger.debug(
+  logger.info(
     `API de Prescrições do teste da IClinic rodando na porta:${PORT}!`
   );
 });
