@@ -4,7 +4,8 @@
   "description": "API de Prescrições para o teste da Iclinic",
   "main": "index.js",
   "scripts": {
-    "coveralls": "nyc npm run all-tests && nyc report --reporter=lcov --reporter=text-lcov | coveralls",
+    "test": "npm run unit-tests",
+    "coveralls": "nyc npm run test && nyc report --reporter=lcov --reporter=text-lcov | coveralls",
     "all-tests": "npm run unit-tests",
     "unit-tests": "NODE_ENV=test mocha --timeout 10000 --recursive",
     "dev": "NODE_ENV=dev nodemon src/server.js"
