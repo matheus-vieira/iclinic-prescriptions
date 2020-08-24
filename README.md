@@ -6,8 +6,8 @@ Serviço de prescrição médica
 Projeto feito para teste da empresa iClinic
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/matheus-vieira/iclinic-prescriptions?branch=master)](https://bettercodehub.com/)
-[![Travis Build](https://travis-ci.org/matheus-vieira/iclinic-prescriptions.svg?branch=master)](https://travis-ci.org/matheus-vieira/iclinic-prescriptions.svg?branch=master)
-
+[![Build Status](https://travis-ci.org/matheus-vieira/iclinic-prescriptions.svg?branch=master)](https://travis-ci.org/matheus-vieira/iclinic-prescriptions)
+[![Coverage Status](https://coveralls.io/repos/github/matheus-vieira/iclinic-prescriptions/badge.svg)](https://coveralls.io/github/matheus-vieira/iclinic-prescriptions)
 
 ## Instruções
 
