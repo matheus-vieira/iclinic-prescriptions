@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 const logger = require('../utils/logging/logger');
+const { info } = require('../utils/logging/logger');
 
 module.exports = class Database {
   constructor() {
@@ -21,9 +22,11 @@ module.exports = class Database {
       {
         host: process.env.DB_HOST,
         dialect: process.env.DB_DIALECT,
+        storage: process.env.DB_STORAGE_SQLITE,
         logging: logger.debug.bind(logger),
       }
     );
+    info("database created successfully at " + process.env.DB_STORAGE_SQLITE)
   }
 
   async isConnected() {

@@ -19,7 +19,9 @@ Não esqueça de rodar o comando `npm install`ou `npm i` para instalar as depend
 
 ### Arquivo .env
 
-Crie um arquivo `.env` e um arquivo `.env.test` (se for rodar os testes) baseado no arquivo `.env.example` 
+Crie um arquivo `.env` e um arquivo `.env.test` (se for rodar os testes) baseado no arquivo `.env.example`.
+
+Adicione um valor para a variável `SERVER_PORT`, e.g. 5000, para manter uma porta fixa no desenvolvimento.
 
 ### Sequelize
 
