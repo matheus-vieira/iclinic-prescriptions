@@ -2,13 +2,15 @@
 language: node_js
 node_js:
   - "node"
+os:
+  - linux
+  - osx
 
-env:
-  global:
-    - COVERALLS_PARALLEL=true
+install:
+- npm install
 
-notifications:
-  webhooks: https://coveralls.io/webhook
+script:
+- npm run coveralls
 
-after_script:
-  - "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+# Send coverage data to Coveralls
+after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
