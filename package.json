@@ -4,7 +4,8 @@
   "description": "API de Prescrições para o teste da Iclinic",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test SERVER_PORT= mocha --timeout 10000 --recursive",
+    "test": "NODE_ENV=test SERVER_PORT= mocha --timeout 10000 --recursive --report spec test/*",
+    "cover": "node_modules/istanbul/lib/cli.js cover npm run test",
     "coveralls": "nyc npm run test && nyc report --reporter=lcov",
     "dev": "NODE_ENV=dev nodemon src/server.js"
   },
@@ -17,7 +18,7 @@
     "api",
     "teste"
   ],
-  "author": "Matheus Costa Vieira <matheus.costa.vieira@gmail.com>",
+  "author": "Matheus Costa Vieira <matheus.costa.vieira@gmail.com> (http://matheus-vieira.github.io/)",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/matheus-vieira/iclinic-prescriptions/issues"
@@ -42,9 +43,9 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
+    "istanbul": "^0.4.5",
     "mocha": "^8.1.1",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^15.1.0",
     "sinon": "^9.0.3",
     "sqlite3": "^5.0.0"
   }
