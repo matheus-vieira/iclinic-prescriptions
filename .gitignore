@@ -103,6 +103,9 @@ dist
 # TernJS port file
 .tern-port
 
-# sql database]
+# sql database
 *.sqlite
 cb_iclinic_prescriptions.sqlite
+
+#ignore for repo token 
+.coveralls.yml
