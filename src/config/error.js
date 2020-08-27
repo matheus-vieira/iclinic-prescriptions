@@ -5,6 +5,6 @@ process.on("uncaughtException", (err) => {
   logger.error("[ERROR] Exceção não tratada: ", err);
 });
 
-process.on("unhandledRejection", (reason, promise) => {
+process.on("unhandledRejection", (reason) => {
   logger.error("[ERROR] Rejeição não tratada: ", reason);
 });

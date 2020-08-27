@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const { error } = require("../utils/logging/logger");
 
 module.exports = (sequelize) => {

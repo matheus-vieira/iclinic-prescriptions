@@ -1,8 +1,6 @@
 const request = require("supertest");
 const { expect } = require("chai");
 
-const makeRequest = require("../src/utils/request");
-
 const PrescriptionRepository = require("../src/repository/PrescriptionRepository");
 
 const checkDB = async (response) => {

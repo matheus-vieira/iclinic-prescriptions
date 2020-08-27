@@ -1,5 +1,4 @@
 const BaseService = require("./baseService");
-const { debug, info } = require("../utils/logging/logger");
 
 const buildMetricObject = ({ clinic, patient, physician }) => {
   return {
