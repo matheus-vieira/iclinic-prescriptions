@@ -1,4 +1,5 @@
 const { validationResult } = require("express-validator");
+const { "01": malFormedUrl } = require("../utils/errorMessageUtil");
 
 const { debug, error } = require("../utils/logging/logger");
 
@@ -16,7 +17,7 @@ class PrescriptionController {
 
     if (!result.isEmpty()) {
       for (const e of result.errors) error(JSON.stringify(e));
-      return res.status(400).json(require("../utils/errorMessageUtil")["01"]);
+      return res.status(400).json(malFormedUrl);
     }
 
     try {
