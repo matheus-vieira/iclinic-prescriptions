@@ -4,6 +4,13 @@ node_js:
 os:
   - linux
 
+addons:
+  apt:
+    packages:
+    - sqlite3
+    sources:
+    - travis-ci/sqlite3
+
 install:
   - npm install
 
