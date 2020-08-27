@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test SERVER_PORT= mocha --timeout 10000 --recursive",
-    "cover": "NODE_ENV=test SERVER_PORT= istanbul cover mocha --report lcovonly -- -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "coveralls": "nyc npm run test && nyc report --reporter=lcov",
+    "cover": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "dev": "NODE_ENV=dev nodemon src/server.js"
   },
   "repository": {
@@ -46,6 +45,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^8.1.1",
     "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^15.1.0",
     "sinon": "^9.0.3",
     "sqlite3": "^5.0.0"
   }
