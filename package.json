@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test SERVER_PORT= mocha --timeout 10000 --recursive",
-    "cover": "NODE_ENV=test nyc npm test && NODE_ENV=test nyc report --reporter=text-lcov",
+    "cover": "NODE_ENV=test nyc npm test && NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
     "dev": "NODE_ENV=dev nodemon src/server.js",
     "lint": "npx eslint ."
   },
