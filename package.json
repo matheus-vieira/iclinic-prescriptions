@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test SERVER_PORT= mocha --timeout 10000 --recursive",
-    "cover": "NODE_ENV=test SERVER_PORT= istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "cover": "NODE_ENV=test SERVER_PORT= istanbul cover mocha --report lcovonly -- -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "coveralls": "nyc npm run test && nyc report --reporter=lcov",
     "dev": "NODE_ENV=dev nodemon src/server.js"
   },
