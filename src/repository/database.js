@@ -26,7 +26,7 @@ module.exports = class Database {
         logging: logger.debug.bind(logger),
       }
     );
-    info("database created successfully at " + process.env.DB_STORAGE_SQLITE)
+    info('database created successfully at ' + process.env.DB_STORAGE_SQLITE);
   }
 
   async isConnected() {
