@@ -16,4 +16,4 @@ module.exports = class PrescriptionRepository extends Database {
       text: text,
     });
   }
-}
+};
