@@ -8,7 +8,7 @@ const checkErrorProp = (key, prop, value) => {
   checkrop(Messages[key].error, prop, value);
 };
 
-describe("checking messages", function () {
+describe("checking messages for 00", function () {
   it("has a 00 entry", function () {
     expect(Messages).to.have.own.property("00");
   });
@@ -18,7 +18,9 @@ describe("checking messages", function () {
   it("has 00 code equals 00", function () {
     checkrop(Messages["00"], "code", "00");
   });
+});
 
+describe("checking messages for 01", function () {
   it("has a 01 entry", function () {
     expect(Messages).to.have.own.property("01");
   });
@@ -44,7 +46,9 @@ describe("checking messages", function () {
   it("has 02 error.code equals 02", function () {
     checkErrorProp("02", "code", "02");
   });
+});
 
+describe("checking messages for 03", function () {
   it("has a 03 entry", function () {
     expect(Messages).to.have.own.property("03");
   });
@@ -57,7 +61,9 @@ describe("checking messages", function () {
   it("has 03 error.code equals 03", function () {
     checkErrorProp("03", "code", "03");
   });
+});
 
+describe("checking messages for 04", function () {
   it("has a 04 entry", function () {
     expect(Messages).to.have.own.property("04");
   });
@@ -70,7 +76,9 @@ describe("checking messages", function () {
   it("has 04 error.code equals 04", function () {
     checkErrorProp("04", "code", "04");
   });
+});
 
+describe("checking messages for 05", function () {
   it("has a 05 entry", function () {
     expect(Messages).to.have.own.property("05");
   });
@@ -83,7 +91,9 @@ describe("checking messages", function () {
   it("has 05 error.code equals 05", function () {
     checkErrorProp("05", "code", "05");
   });
+});
 
+describe("checking messages for 06", function () {
   it("has a 06 entry", function () {
     expect(Messages).to.have.own.property("06");
   });
@@ -96,7 +106,9 @@ describe("checking messages", function () {
   it("has 06 error.code equals 06", function () {
     checkErrorProp("06", "code", "06");
   });
+});
 
+describe("checking messages for 07", function () {
   it("has a 07 entry", function () {
     expect(Messages).to.have.own.property("07");
   });
