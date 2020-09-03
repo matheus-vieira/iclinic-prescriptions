@@ -2,12 +2,12 @@ const makeRequest = require("../utils/request");
 
 class BaseService {
   constructor() {
-    this.url;
-    this.token;
-    this.timeout;
-    this.retries;
-    this.ttl;
-    this.errorMessage;
+    this.url = "";
+    this.token = "";
+    this.timeout = "";
+    this.retries = "";
+    this.ttl = "";
+    this.errorMessage = "";
     this.method = "get";
   }
 
