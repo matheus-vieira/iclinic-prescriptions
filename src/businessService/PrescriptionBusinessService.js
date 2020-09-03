@@ -60,4 +60,4 @@ class PrescriptionBusinessService {
   }
 }
 
-module.exports = PrescriptionBusinessService
+module.exports = PrescriptionBusinessService;
