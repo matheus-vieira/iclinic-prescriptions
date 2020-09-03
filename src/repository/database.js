@@ -5,7 +5,7 @@ const { info } = require('../utils/logging/logger');
 
 module.exports = class Database {
   constructor() {
-    this.model;
+    this.model = null;
     this.createDb();
     this.defineModel();
   }

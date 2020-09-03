@@ -14,11 +14,11 @@ const PrescriptionRepository = require("../repository/PrescriptionRepository");
 
 class PrescriptionBusinessService {
   constructor() {
-    this.clinic;
-    this.patient;
-    this.physician;
-    this.prescription;
-    this.text;
+    this.clinic = null;
+    this.patient = null;
+    this.physician = null;
+    this.prescription = null;
+    this.text = "";
 
     this.repository = new PrescriptionRepository();
   }
