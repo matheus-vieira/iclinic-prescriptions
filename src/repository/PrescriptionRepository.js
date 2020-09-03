@@ -12,7 +12,7 @@ module.exports = class PrescriptionRepository extends Database {
     return await this.create({
       clinicId: clinic ? clinic.id : null,
       physicianId: physician.id,
-      patientId: patient?.id,
+      patientId: patient ? patient : patient.id,
       text: text,
     });
   }
