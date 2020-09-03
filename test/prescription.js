@@ -66,6 +66,8 @@ describe("Prescription's endpoint", () => {
 
   it("should show a malformed request without clinic on request", async () => {
     delete validData.clinic;
+
+    malFormed();
   }, 30000);
 
   it("should show a malformed request without physician on request", async () => {
