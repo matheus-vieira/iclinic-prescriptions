@@ -3,7 +3,7 @@ const logger = require("./logger");
 
 logger.stream = {
   write: (message) =>
-    logger.info(message.substring(0, message.lastIndexOf("\n"))),
+    logger.debug(message.substring(0, message.lastIndexOf("\n"))),
 };
 
 module.exports = morgan(

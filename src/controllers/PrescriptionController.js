@@ -1,9 +1,9 @@
-const { validationResult } = require("express-validator");
+const { validationResult } = require('express-validator');
+const { '01': malFormedUrl } = require('../utils/errorMessageUtil');
 
-const { debug, error } = require("../utils/logging/logger");
+const { debug, error } = require('../utils/logging/logger');
 
-//BusinessService
-const PrescriptionBusinessService = require("../businessService/PrescriptionBusinessService");
+const PrescriptionBusinessService = require('../businessService/PrescriptionBusinessService');
 
 class PrescriptionController {
   constructor() {
@@ -11,18 +11,18 @@ class PrescriptionController {
   }
 
   async save(req, res) {
-    debug("checking validation");
+    debug('checking validation');
     const result = validationResult(req);
 
     if (!result.isEmpty()) {
-      for (const e of result.errors) error(JSON.stringify(e));
-      return res.status(400).json(require("../utils/errorMessageUtil")["01"]);
+      Array.from(result.errors).forEach((e) => error(JSON.stringify(e)));
+      return res.status(400).json(malFormedUrl);
     }
 
     try {
-      debug("Calling this.businessService", req.body);
+      debug('Calling this.businessService', req.body);
       const data = await this.businessService.callServices(req.body);
-      return res.status(200).json({ data: data });
+      return res.status(200).json({ data });
     } catch (err) {
       error(err);
       const statusCode = err.statusCode || 500;

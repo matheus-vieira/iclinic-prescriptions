@@ -1,5 +1,5 @@
-const BaseService = require("./baseService");
-const { debug } = require("../utils/logging/logger");
+const BaseService = require('./baseService');
+const { error } = require('../utils/logging/logger');
 
 class ClinicService extends BaseService {
   constructor() {
@@ -10,13 +10,15 @@ class ClinicService extends BaseService {
     this.timeout = process.env.CLINICS_API_TIMEOUT;
     this.retries = process.env.CLINICS_API_RETRIES;
     this.ttl = process.env.CLINICS_API_TTL;
-    this.errorMessage = "";
+    this.errorMessage = '';
   }
 
   async getById(id) {
     try {
       return await this.get(`clinics/${id}`);
-    } catch (err) {}
+    } catch (err) {
+      error(JSON.stringify(err));
+    }
     return null;
   }
 }
