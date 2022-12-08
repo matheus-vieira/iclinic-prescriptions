@@ -34,16 +34,6 @@ describe("Prescription's endpoint", () => {
       .send(data);
   };
 
-  const malFormed = async () => {
-    const response = await callPrescriptions(validData);
-  
-    expect(response.status).to.be.equal(400);
-    expect(response.body).to.be.an("object");
-    expect(response.body.error).to.be.an("object");
-    expect(response.body.error.message).to.be.equal("malformed request");
-    expect(response.body.error.code).to.be.equal("01");
-  };
-
   beforeEach(function () {
     delete require.cache[require.resolve("../src/server")];
     server = require("../src/server");
@@ -65,30 +55,11 @@ describe("Prescription's endpoint", () => {
     await checkDB(response);
   }, 30000);
 
-  const malformedTheories = [
-    "clinic", "physician", "patient", "text"
-  ];
-
-  malformedTheories.forEach(prop => {
-    const validDataMalFormed = {
-      clinic: { id: 1 },
-      physician: { id: 1 },
-      patient: { id: 1 },
-      text: "Dipirona 1x ao dia",
-    };
-    it(`should show a malformed request without ${prop} on request`, async () => {
-      delete validDataMalFormed[prop];
-      malFormed();
-    }, 30000);
-  });
-
+  
   it("should be succes with wrong clinic id", async () => {
-    const response = await callPrescriptions({
-      clinic: { id: 9 },
-      physician: { id: 1 },
-      patient: { id: 1 },
-      text: "Dipirona 1x ao dia",
-    });
+    let dataWrongClinicId = Object.create(validData);
+    dataWrongClinicId.clinic = { id: 9 }
+    const response = await callPrescriptions(dataWrongClinicId);
 
     await checkDB(response);
 
